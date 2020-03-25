@@ -23,7 +23,7 @@ module ProgrammersPreferencesBackend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-config.hosts << "8cb1895024ff4fafabdb2e3e09aa2df4.vfs.cloud9.us-east-1.amazonaws.com"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

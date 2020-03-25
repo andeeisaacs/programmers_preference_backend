@@ -18,7 +18,6 @@ describe "Programmers API", type: :request do
     expect(json.length).to eq 1
   end
   
-  
     it "creates a programmer" do
     # The params we are going to send with the request
     programmer_params = {
@@ -42,4 +41,20 @@ describe "Programmers API", type: :request do
     expect(new_programmer.name).to eq('Buster')
   end
   
+  it "doesn't create a cat without a name" do
+    programmer_params = {
+      programmer: {
+        age: 2,
+        enjoys: 'Walks in the park'
+      }
+    }
+    # Send the request to the  server
+    post '/programmers', params: programmer_params
+    # expect an error if the programmer_params does not have a name
+    expect(response.status).to eq 422
+    # Convert the JSON response into a Ruby Hash
+    json = JSON.parse(response.body)
+    # Errors are returned as an array because there could be more than one, if there are more than one validation failures on an attribute.
+    expect(json['name']).to include "can't be blank"
+  end
 end

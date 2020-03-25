@@ -5,8 +5,7 @@ class ProgrammersController < ApplicationController
     end
   
     def create
-    
-        programmer = Programmers.create(programmer_params)
+        programmer = Programmer.create(programmer_params)
         if programmer.valid?
             render json: programmer
         else
